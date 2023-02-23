@@ -82,7 +82,6 @@ body {
 .sidebar-wrapper .sidebar-dropdown > a:after,
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before,
 .sidebar-wrapper ul li a i,
-.page-wrapper .page-content,
 .sidebar-wrapper .sidebar-search input.search-menu,
 .sidebar-wrapper .sidebar-search .input-group-text,
 .sidebar-wrapper .sidebar-menu ul li a,
@@ -119,11 +118,6 @@ body {
     left: 0px;
 }
 
-@media screen and (min-width: 768px) {
-    .page-wrapper.toggled .page-content {
-        padding-left: 300px;
-    }
-}
 /*----------------show sidebar button----------------*/
 #show-sidebar {
     position: fixed;
@@ -385,21 +379,6 @@ body {
 }
 
 /*--------------------------page-content-----------------------------*/
-
-.page-wrapper .page-content {
-    display: inline-block;
-    width: 100%;
-    padding-left: 0px;
-    padding-top: 20px;
-}
-
-.page-wrapper .page-content > div {
-    padding: 20px 40px;
-}
-
-.page-wrapper .page-content {
-    overflow-x: hidden;
-}
 
 /*------scroll bar---------------------*/
 
