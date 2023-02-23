@@ -20,10 +20,13 @@
                             @csrf
 
                             <div class="md-form">
-                                <label for="">Email</label>
-                                <input id="email" type="email"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <label for="">Phone</label>
+                                <input id="phone" type="number"
+                                    class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                    value="{{ old('phone') }}" autofocus>
+                                @error('phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="md-form">
@@ -31,6 +34,9 @@
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password" required
                                     autocomplete="current-password">
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-check">

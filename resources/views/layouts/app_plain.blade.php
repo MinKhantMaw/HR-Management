@@ -18,7 +18,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
     @yield('extra_css')
     <!-- Scripts -->
     {{--    @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
