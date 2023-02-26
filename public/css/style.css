@@ -22,6 +22,14 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
+.app-bar a {
+    color: #000;
+}
+
+.app-bar a:hover {
+    color: #000;
+}
+
 /* bottom menu */
 .bottom-bar {
     padding: 15px 0 !important;

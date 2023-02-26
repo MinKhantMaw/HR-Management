@@ -9,11 +9,10 @@
         <div class="card-body">
             <table class="table table-striped table-bordered" id="example">
                 <thead>
-                    <td class="text-center">Employee ID</td>
+                    <td class="text-center">ID</td>
                     <th class="text-center">Name</th>
                     <th class="text-center">Phone</th>
                     <th class="text-center">Email</th>
-                    {{-- <th class="text-center">NRC Number</th> --}}
                     <th class="text-center">Department</th>
                     <th class="text-center">Is Present</th>
                 </thead>
@@ -29,8 +28,8 @@
                 serverSide: true,
                 ajax: '{{ route('getDatatable') }}',
                 columns: [{
-                        data: 'employee_id',
-                        name: 'employee_id',
+                        data: 'id',
+                        name: 'id',
                         class: 'text-center',
                     },
                     {

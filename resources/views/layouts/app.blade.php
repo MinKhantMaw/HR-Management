@@ -140,7 +140,7 @@
     </div>
 
     {{-- datatable --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 
@@ -153,14 +153,21 @@
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
     {{-- daterange picker --}}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script>
-        jQuery(function($) {
 
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+
+    {{-- Sweet alert 2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        $(function($) {
             $(".sidebar-dropdown > a").click(function() {
                 $(".sidebar-submenu").slideUp(200);
                 if (
@@ -191,6 +198,33 @@
                 e.preventDefault();
                 $(".page-wrapper").addClass("toggled");
             });
+
+            document.addEventListener('click', function(event) {
+                if (document.getElementById('show-sidebar').contains(event.target)) {
+                    $(".page-wrapper").addClass("toggled");
+                } else if (!document.getElementById('sidebar').contains(event.target)) {
+                    $(".page-wrapper").removeClass("toggled");
+                }
+            });
+            @if (session('create'))
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    title: 'Successfully Created',
+                    text: "{{ session('create') }}",
+                    icon: 'success'
+                })
+            @endif
         });
     </script>
     @yield('scripts')

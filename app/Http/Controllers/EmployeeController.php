@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
 use App\Models\User;
 use App\Models\Employee;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use App\Http\Requests\StoreEmployee;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -55,9 +57,23 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployee $request)
     {
-        //
+        $employee = User::create([
+            'employee_id' => $request->employee_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'nrc_number' => $request->nrc_number,
+            'gender' => $request->gender,
+            'birthday' => $request->birthday,
+            'department_id' => $request->department_id,
+            'date_of_join' => $request->date_of_join,
+            'is_present' => $request->is_present,
+            'address' => $request->address,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('employees.index')->with(['create' => 'Employee Create Successfully']);
     }
 
     /**

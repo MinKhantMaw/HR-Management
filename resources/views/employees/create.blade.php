@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('employees.store') }}" method="POST">
+            <form action="{{ route('employees.store') }}" method="POST" id="create-form">
                 @csrf
                 <div class="md-form">
                     <label for="">Employee ID</label>
@@ -36,13 +36,10 @@
                     <label for="">Birthday</label>
                     <input type="text" name="birthday" class="form-control birthday" autocomplete="off">
                 </div>
-                <div class="md-form">
-                    <label for="">Address</label>
-                    <textarea name="address" class="md-textarea form-control"></textarea>
-                </div>
+
                 <div class="form-group">
                     <label for="">Department</label>
-                    <select class="form-control" name="department">
+                    <select class="form-control" name="department_id">
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}">{{ $department->title }}</option>
                         @endforeach
@@ -59,6 +56,14 @@
                         <option value="1">Yes</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <textarea name="address" class="form-control"></textarea>
+                </div>
+                <div class="md-form">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
                 <div class="d-flex justify-content-center mt-5 mb-3">
                     <div class="col-md-6 ">
                         <button type="submit" class="btn btn-theme btn-sm btn-block" style="color: white">Confirm</button>
@@ -69,6 +74,8 @@
     </div>
 @endsection
 @section('scripts')
+    {!! JsValidator::formRequest('App\Http\Requests\StoreEmployee', '#create-form') !!}
+
     <script>
         $(document).ready(function() {
             $('.birthday').daterangepicker({
