@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper chiller-theme toggled">
+    <div class="page-wrapper chiller-theme ">
 
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
@@ -94,23 +94,25 @@
         </nav>
         <!-- sidebar-wrapper  -->
         <div class="app-bar">
-            <div class="row justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between">
                         <a href="" id="show-sidebar"><i class="fas fa-bars"></i></a>
-                        <h5> @yield('title')</h5>
+                        <h5 class="mb-0"> @yield('title')</h5>
                         <a href=""></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="py-4">
-            <div class="d-flex justify-contnet-center">
+
+        <div class="py-4 content">
+            <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     @yield('content')
                 </div>
             </div>
         </div>
+
         <div class="bottom-bar">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -151,6 +153,11 @@
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    {{-- daterange picker --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script>
         jQuery(function($) {
 

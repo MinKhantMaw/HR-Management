@@ -1,15 +1,21 @@
 @extends('layouts.app')
 @section('title', 'Employees')
 @section('content')
+    <div class="">
+        <a href="{{ route('employees.create') }}" class="btn btn-success btn-theme btn-sm"><i class="fas fa-plus-circle"></i>
+            Create Employee</a>
+    </div>
     <div class="card">
-        <div class="card-header">
-        </div>
         <div class="card-body">
-            <table class="table" id="example">
+            <table class="table table-striped table-bordered" id="example">
                 <thead>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
+                    <td class="text-center">Employee ID</td>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Email</th>
+                    {{-- <th class="text-center">NRC Number</th> --}}
+                    <th class="text-center">Department</th>
+                    <th class="text-center">Is Present</th>
                 </thead>
             </table>
         </div>
@@ -23,17 +29,35 @@
                 serverSide: true,
                 ajax: '{{ route('getDatatable') }}',
                 columns: [{
+                        data: 'employee_id',
+                        name: 'employee_id',
+                        class: 'text-center',
+                    },
+                    {
                         data: 'name',
                         name: 'name',
+                        class: 'text-center',
                     },
                     {
                         data: 'phone',
                         name: 'phone',
+                        class: 'text-center',
                     },
                     {
                         data: 'email',
                         name: 'email',
+                        class: 'text-center',
                     },
+                    {
+                        data: 'department_name',
+                        name: 'department_name',
+                        class: 'text-center',
+                    },
+                    {
+                        data: 'is_present',
+                        name: 'is_present',
+                        class: 'text-center',
+                    }
                 ]
             });
         });

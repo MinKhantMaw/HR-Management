@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\User;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -26,12 +28,25 @@ class EmployeeController extends Controller
 
     public function ssd()
     {
-        $employees  = Employee::query();
-        return Datatables::of($employees)->make(true);
+        $employees  = User::query();
+        return Datatables::of($employees)
+            ->addColumn('department_name', function ($each) {
+                return $each->department ? $each->department->title : '-';
+            })
+            ->editColumn('is_present', function ($each) {
+                if ($each->is_present == 1) {
+                    return '<span class="badge bage-pill badge-success border border-success pill">Present</span>';
+                } else {
+                    return '<span class="badge bage-pill badge-danger border border-danger pill">Leave</span>';
+                }
+            })
+            ->rawColumns(['is_present'])
+            ->make(true);
     }
     public function create()
     {
-        //
+        $departments = Department::orderBy('title')->get();
+        return view('employees.create', ['departments' => $departments]);
     }
 
     /**

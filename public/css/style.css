@@ -1,13 +1,21 @@
+/* main conent */
+.content {
+    height: 85vh;
+    overflow: scroll;
+}
 .btn-theme {
     color: #fff;
-    background-color: #4cd195;
+    background-color: #4cd195 !important;
 }
 
 .btn-theme:hover {
     color: #fff;
-    background-color: #4cd195;
+    background-color: #4cd195 !important;
 }
 
+.btn {
+    font-size: 12px !important;
+}
 /* header menu */
 .app-bar {
     padding: 10px 0;
@@ -25,7 +33,7 @@
 
 .bottom-bar a {
     text-align: center;
-    padding: 15px;
+    padding: 5px 25px;
     color: #000;
 }
 
@@ -496,4 +504,9 @@
 
 .chiller-theme .sidebar-footer > a:last-child {
     border-right: none;
+}
+
+/* datatable btn */
+.pagination .page-item.active .page-link {
+    background-color: #4cd195;
 }
