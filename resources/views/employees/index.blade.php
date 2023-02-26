@@ -7,14 +7,16 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped table-bordered" id="example">
+            <table class="table  table-bordered" id="example" style="width: 100%">
                 <thead>
-                    <td class="text-center">ID</td>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Phone</th>
-                    <th class="text-center">Email</th>
-                    <th class="text-center">Department</th>
-                    <th class="text-center">Is Present</th>
+                    <td class="text-center no-sort no-search"></td>
+                    <td class="text-center no-sort">Employee ID</td>
+                    <th class="text-center no-sort">Name</th>
+                    <th class="text-center no-sort">Phone</th>
+                    <th class="text-center no-sort">Email</th>
+                    <th class="text-center no-sort">Department</th>
+                    <th class="text-center no-sort">Is Present</th>
+                    <th class="text-center no-sort no-search hidden">Updated at</th>
                 </thead>
             </table>
         </div>
@@ -26,10 +28,16 @@
             $('#example').DataTable({
                 processing: true,
                 serverSide: true,
+                responsive: true,
                 ajax: '{{ route('getDatatable') }}',
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'plus-icon',
+                        name: 'plus-icon',
+                        class: 'text-center',
+                    },
+                    {
+                        data: 'employee_id',
+                        name: 'employee_id',
                         class: 'text-center',
                     },
                     {
@@ -56,8 +64,38 @@
                         data: 'is_present',
                         name: 'is_present',
                         class: 'text-center',
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at',
+                        class: 'text-center',
                     }
-                ]
+                ],
+                order: [
+                    [
+                        7, 'desc',
+                    ]
+                ],
+                columnDefs: [{
+                        target: 6,
+                        visible: false,
+                    },
+                    {
+                        target: 0,
+                        class: "control",
+                    },
+                    {
+                        target: "no-sort",
+                        orderable: false,
+                    },
+                    {
+                        target: "no-search",
+                        searchable: false,
+                    },
+                ],
+                language: {
+                    processing: "<p class='my-3'>Loading... </p>",
+                }
             });
         });
     </script>

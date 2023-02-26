@@ -18,13 +18,16 @@
 
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
     <!-- MDB -->
+
     {{-- Datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.material.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
@@ -95,7 +98,7 @@
         <!-- sidebar-wrapper  -->
         <div class="app-bar">
             <div class="d-flex justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="d-flex justify-content-between">
                         <a href="" id="show-sidebar"><i class="fas fa-bars"></i></a>
                         <h5 class="mb-0"> @yield('title')</h5>
@@ -107,7 +110,7 @@
 
         <div class="py-4 content">
             <div class="d-flex justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     @yield('content')
                 </div>
             </div>
@@ -115,7 +118,7 @@
 
         <div class="bottom-bar">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="d-flex justify-content-between">
                         <a href="" class="text-decoration-none">
                             <i class="fas fa-home"></i>
@@ -143,6 +146,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

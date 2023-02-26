@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Employee;
 use App\Models\Department;
@@ -41,6 +42,12 @@ class EmployeeController extends Controller
                 } else {
                     return '<span class="badge bage-pill badge-danger border border-danger pill">Leave</span>';
                 }
+            })
+            ->editColumn('updated_at', function ($each) {
+                return Carbon::parse($each->updated_at)->format('Y-m-d H:i:s');
+            })
+            ->addColumn('plus-icon', function ($each) {
+                return null;
             })
             ->rawColumns(['is_present'])
             ->make(true);

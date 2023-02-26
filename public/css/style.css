@@ -518,3 +518,55 @@
 .pagination .page-item.active .page-link {
     background-color: #4cd195;
 }
+table.dataTable > tbody > tr.child ul.dtr-details {
+    width: 100%;
+}
+table.dataTable > tbody > tr.child ul.dtr-details > li {
+    text-align: left !important;
+}
+.paginate_button {
+    font-size: 14px !important;
+    background-color: #eee !important;
+    margin: 0px 2px;
+}
+
+.action-icon a {
+    padding: 5px;
+    background: #eee;
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    line-height: 25px;
+    display: inline-block;
+    margin: 3px !important;
+    text-align: center;
+}
+
+mark {
+    padding: 0px !important;
+    background: #4cd195;
+}
+.pagination {
+    justify-content: end !important;
+}
+
+@media screen and (max-width: 767px) {
+    div.dataTables_wrapper div.dataTables_filter label {
+        width: 100%;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 75%;
+    }
+
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_filter,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+        text-align: left;
+    }
+
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        justify-content: start !important;
+    }
+}
