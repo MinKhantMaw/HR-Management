@@ -16,6 +16,7 @@
                     <th class="text-center no-sort">Email</th>
                     <th class="text-center no-sort">Department</th>
                     <th class="text-center no-sort">Is Present</th>
+                    <th class="text-center no-sort">Action</th>
                     <th class="text-center no-sort no-search hidden">Updated at</th>
                 </thead>
             </table>
@@ -66,6 +67,11 @@
                         class: 'text-center',
                     },
                     {
+                        data: 'action',
+                        name: 'action',
+                        class: 'text-center',
+                    },
+                    {
                         data: 'updated_at',
                         name: 'updated_at',
                         class: 'text-center',
@@ -73,11 +79,11 @@
                 ],
                 order: [
                     [
-                        7, 'desc',
+                        8, 'desc',
                     ]
                 ],
                 columnDefs: [{
-                        target: 6,
+                        target: 8,
                         visible: false,
                     },
                     {

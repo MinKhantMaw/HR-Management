@@ -9,6 +9,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\StoreEmployee;
+use App\Http\Requests\UpdateEmployee;
 use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
@@ -49,7 +50,12 @@ class EmployeeController extends Controller
             ->addColumn('plus-icon', function ($each) {
                 return null;
             })
-            ->rawColumns(['is_present'])
+            ->addColumn('action', function ($each) {
+                $edti_icon = '<a href=" ' . route('employees.edit', $each->id) . '" class="text-warning"><i class="fas fa-edit"></i></a>';
+                $show_icon = '<a href=" ' . route('employees.show', $each->id) . '" class="text-primary"><i class="fas fa-info-circle"></i></a>';
+                return '<div class="action-icon">' . $edti_icon . $show_icon . '</div>';
+            })
+            ->rawColumns(['is_present', 'action'])
             ->make(true);
     }
     public function create()
@@ -89,9 +95,10 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-        //
+        $employee = User::findOrFail($id);
+        return view('employees.show', ['employee' => $employee]);
     }
 
     /**
@@ -100,9 +107,11 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        //
+        $employee = User::findOrFail($id);
+        $departments = Department::get();
+        return view('employees.edit', ['employee' => $employee, 'departments' => $departments]);
     }
 
     /**
@@ -112,9 +121,24 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update($id, UpdateEmployee $request)
     {
-        //
+
+        $employee = User::findOrFail($id);
+        $employee->employee_id = $request->employee_id;
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+        $employee->nrc_number = $request->nrc_number;
+        $employee->gender = $request->gender;
+        $employee->birthday = $request->birthday;
+        $employee->department_id = $request->department_id;
+        $employee->date_of_join = $request->date_of_join;
+        $employee->is_present = $request->is_present;
+        $employee->address = $request->address;
+        $employee->password = $request->password ? Hash::make($request->password) : $employee->password;
+        $employee->update();
+        return redirect()->route('employees.index')->with(['update' => 'Employee Updated Successfully']);
     }
 
     /**
