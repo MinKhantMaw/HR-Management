@@ -570,3 +570,10 @@ mark {
         justify-content: start !important;
     }
 }
+
+/* preview image */
+.preview_image img {
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}

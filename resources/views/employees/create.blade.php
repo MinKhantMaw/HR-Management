@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('employees.store') }}" method="POST" id="create-form">
+            <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data" id="create-form">
                 @csrf
                 <div class="md-form">
                     <label for="">Employee ID</label>
@@ -59,6 +59,15 @@
                 <div class="form-group">
                     <label for="">Address</label>
                     <textarea name="address" class="form-control"></textarea>
+
+
+                </div>
+                <div class="mb-form">
+                    <label for="profile_image">Profile Image</label>
+                    <input type="file" name="profile_image" class="form-control" id="profile_image">
+                    <div class="preview_image my-2">
+
+                    </div>
                 </div>
                 <div class="md-form">
                     <label for="">Password</label>
@@ -95,6 +104,14 @@
                 "locale": {
                     "format": "YYYY-MM-DD",
                 },
+            });
+            $('#profile_image').on('change', function() {
+                var file_length = document.getElementById('profile_image').files.length;
+                $('.preview_image').html('');
+                for (var i = 0; i < file_length; i++) {
+                    $('.preview_image').append(
+                        `<img src="${URL.createObjectURL(event.target.files[i])}"/>`);
+                }
             });
         });
     </script>
