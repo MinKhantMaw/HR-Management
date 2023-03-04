@@ -59,8 +59,6 @@
                 <div class="form-group">
                     <label for="">Address</label>
                     <textarea name="address" class="form-control"></textarea>
-
-
                 </div>
                 <div class="mb-form">
                     <label for="profile_image">Profile Image</label>

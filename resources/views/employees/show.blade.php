@@ -26,11 +26,22 @@
                 </div> --}}
                 <div class="mb-3">
                     <p class="mb-0"><i class="fas fa-user"></i> Is Present</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->is_present }}</p>
+                    <p class="text-muted mb-0 mx-2">
+                        @if ($employee->is_present == 1)
+                            <span class="text-success">Is Present</span>
+                        @elseif($employee->is_present == 0)
+                            <span class="text-danger ">Leave</span>
+                        @endif
+
+                    </p>
                 </div>
                 <div class="mb-3">
                     <p class="mb-0"><i class="fas fa-user"></i> Date Of Birth</p>
                     <p class="text-muted mb-0 mx-2">{{ $employee->birthday }}</p>
+                </div>
+                <div class="mb-3">
+                    <p class="mb-0"><i class="fas fa-user"></i> Department</p>
+                    <p class="text-muted mb-0 mx-2">{{ $employee->department->title ?? '' }}</p>
                 </div>
             </div>
         </div>
