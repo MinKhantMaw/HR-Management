@@ -3,7 +3,8 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('employees.update', $employee->id) }}" method="POST" id="edit-form">
+            <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data"
+                id="edit-form">
                 @csrf
                 @method('PUT')
                 <div class="md-form">
@@ -65,7 +66,17 @@
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <textarea name="address" class="form-control">{{ $employee->address }}</textarea>
+                    <textarea name="address" class="form-control"> {{ $employee->address }} </textarea>
+                </div>
+                <div class="mb-form">
+                    <label for="profile_image">Profile Image</label>
+                    <input type="file" name="profile_image" class="form-control" id="profile_image">
+
+                    <div class="preview_image my-2">
+                        @if ($employee->profile_image)
+                            <img src="{{ $employee->profile_image_path() }}" alt="">
+                        @endif
+                    </div>
                 </div>
                 <div class="md-form">
                     <label for="">Password</label>
@@ -102,6 +113,14 @@
                 "locale": {
                     "format": "YYYY-MM-DD",
                 },
+            });
+            $('#profile_image').on('change', function() {
+                var file_length = document.getElementById('profile_image').files.length;
+                $('.preview_image').html('');
+                for (var i = 0; i < file_length; i++) {
+                    $('.preview_image').append(
+                        `<img src="${URL.createObjectURL(event.target.files[i])}"/>`);
+                }
             });
         });
     </script>

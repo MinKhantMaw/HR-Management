@@ -9,8 +9,9 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\StoreEmployee;
-use App\Http\Requests\UpdateEmployee;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateEmployee;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -72,6 +73,12 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployee $request)
     {
+        $profile_image_name = '';
+        if ($request->has('profile_image')) {
+            $profile_image_file = $request->file('profile_image');
+            $profile_image_name = uniqid() . '.' . $profile_image_file->getClientOriginalExtension();
+            Storage::disk('public')->put('employees/' . $profile_image_name, file_get_contents($profile_image_file));
+        }
         $employee = User::create([
             'employee_id' => $request->employee_id,
             'name' => $request->name,
@@ -83,6 +90,7 @@ class EmployeeController extends Controller
             'department_id' => $request->department_id,
             'date_of_join' => $request->date_of_join,
             'is_present' => $request->is_present,
+            'profile_image' => $profile_image_name,
             'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
@@ -125,6 +133,16 @@ class EmployeeController extends Controller
     {
 
         $employee = User::findOrFail($id);
+
+        $profile_image_name = $employee->profile_image;
+        if ($request->hasFile('profile_image')) {
+
+            Storage::disk('public')->delete('employees/' . $employee->profile_image);
+            $profile_image_file = $request->file('profile_image');
+            $profile_image_name = uniqid() . '.' . $profile_image_file->getClientOriginalExtension();
+            Storage::disk('public')->put('employees/' . $profile_image_name, file_get_contents($profile_image_file));
+        }
+
         $employee->employee_id = $request->employee_id;
         $employee->name = $request->name;
         $employee->email = $request->email;
@@ -136,6 +154,7 @@ class EmployeeController extends Controller
         $employee->date_of_join = $request->date_of_join;
         $employee->is_present = $request->is_present;
         $employee->address = $request->address;
+        $employee->profile_image = $profile_image_name;
         $employee->password = $request->password ? Hash::make($request->password) : $employee->password;
         $employee->update();
         return redirect()->route('employees.index')->with(['update' => 'Employee Updated Successfully']);

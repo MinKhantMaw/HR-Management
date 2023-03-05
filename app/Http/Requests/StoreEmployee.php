@@ -23,12 +23,12 @@ class StoreEmployee extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('employees');
+
         return [
-            'employee_id' => 'required|unique:users,employee_id' . $id,
+            'employee_id' => 'required|unique:users,employee_id',
             'name' => 'required',
-            'phone' => 'required|min:9|max:11|unique:users,phone' . $id,
-            'email' => 'required|email|unique:users,email' . $id,
+            'phone' => 'required|min:9|max:11|unique:users,phone',
+            'email' => 'required|email|unique:users,email',
             'nrc_number' => 'required',
             'gender' => 'required',
             'birthday' => 'required',

@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class, 'department_id', 'id');
     }
+
+    public function profile_image_path()
+    {
+        if ($this->profile_image) {
+            return asset('storage/employees/' . $this->profile_image);
+        }
+
+        return null;
+    }
 }

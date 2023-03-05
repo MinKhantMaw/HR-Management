@@ -23,11 +23,12 @@ class UpdateEmployee extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('employees');
         return [
-            'employee_id' => 'required|unique:users,employee_id',
+            'employee_id' => 'required|unique:users,employee_id' . $id,
             'name' => 'required',
-            'phone' => 'required|min:9|max:11|unique:users,phone',
-            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|min:9|max:11|unique:users,phone' . $id,
+            'email' => 'required|email|unique:users,email' . $id,
             'nrc_number' => 'required',
             'gender' => 'required',
             'birthday' => 'required',
