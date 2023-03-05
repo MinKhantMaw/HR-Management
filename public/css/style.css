@@ -32,6 +32,7 @@
 
 /* bottom menu */
 .bottom-bar {
+    background: #fff;
     padding: 15px 0 !important;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     position: absolute;
@@ -576,4 +577,16 @@ mark {
     width: 100px;
     border-radius: 5px;
     border: 1px solid #ddd;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 1px solid #4cd195;
+    padding: 3px;
+}
+
+.dash-border {
+    border-left: 2px dashed #ddd;
 }

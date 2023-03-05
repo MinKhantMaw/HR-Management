@@ -54,7 +54,8 @@ class EmployeeController extends Controller
             ->addColumn('action', function ($each) {
                 $edti_icon = '<a href=" ' . route('employees.edit', $each->id) . '" class="text-warning"><i class="fas fa-edit"></i></a>';
                 $show_icon = '<a href=" ' . route('employees.show', $each->id) . '" class="text-primary"><i class="fas fa-info-circle"></i></a>';
-                return '<div class="action-icon">' . $edti_icon . $show_icon . '</div>';
+                $delete_icon = '<a href=" #" class="text-danger delete-btn"><i class="fas fa-trash-alt"></i></a>';
+                return '<div class="action-icon">' . $edti_icon . $show_icon .  $delete_icon . '</div>';
             })
             ->rawColumns(['is_present', 'action'])
             ->make(true);

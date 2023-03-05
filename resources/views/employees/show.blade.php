@@ -3,45 +3,46 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-user"></i> Name</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->name }}</p>
-                </div>
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fa-solid fa-envelope"></i> EMial</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->email }}</p>
-                </div>
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-phone"></i> Phone</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->phone }}</p>
-                </div>
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-address"></i> Address</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->address }}</p>
-                </div>
-                {{-- <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-user"></i> Department</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->id }} {{ $employee->d }}</p>
-                </div> --}}
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-user"></i> Is Present</p>
-                    <p class="text-muted mb-0 mx-2">
-                        @if ($employee->is_present == 1)
-                            <span class="text-success">Is Present</span>
-                        @elseif($employee->is_present == 0)
-                            <span class="text-danger ">Leave</span>
-                        @endif
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center d-flex justify-content-start">
+                        <img src="{{ $employee->profile_image_path() }}" alt="" class="profile-image">
+                        <div class="py-3 px-3">
+                            <h4>{{ $employee->name }}</h4>
+                            <p class="text-muted mb-2"><span class="text-muted">{{ $employee->employee_id }}</span> | <span
+                                    class="text-theme">{{ $employee->phone }}</span></p>
+                            <p class="text-muted mb-2"><span
+                                    class="badge badge-pill badge-light border">{{ $employee->department ? $employee->department->title : '-' }}</span>
+                            </p>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 dash-border">
+                    <p class="mb-1"><strong>Phone</strong> : <span class="text-muted">{{ $employee->phone }}</span>
                     </p>
-                </div>
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-user"></i> Date Of Birth</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->birthday }}</p>
-                </div>
-                <div class="mb-3">
-                    <p class="mb-0"><i class="fas fa-user"></i> Department</p>
-                    <p class="text-muted mb-0 mx-2">{{ $employee->department->title ?? '' }}</p>
+                    <p class="mb-1"><strong>Email</strong> : <span class="text-muted">{{ $employee->email }}</span>
+                    </p>
+                    <p class="mb-1"><strong>NRC Number</strong> : <span
+                            class="text-muted">{{ $employee->nrc_number }}</span>
+                    </p>
+                    <p class="mb-1"><strong>Gender</strong> : <span
+                            class="text-muted">{{ ucfirst($employee->gender) }}</span>
+                    </p>
+                    <p class="mb-1"><strong>Birthday</strong> : <span class="text-muted">{{ $employee->birthday }}</span>
+                    </p>
+                    <p class="mb-1"><strong>Address</strong> : <span class="text-muted">{{ $employee->address }}</span>
+                    </p>
+
+                    <p class="mb-1"><strong>Date of Join</strong> : <span
+                            class="text-muted">{{ $employee->date_of_join }}</span></p>
+                    <p class="mb-1"><strong>Is Present?</strong> :
+                        @if ($employee->is_present == 1)
+                            <span class="badge badge-pill badge-success">Present</span>
+                        @else
+                            <span class="badge badge-pill badge-danger">Leave</span>
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>

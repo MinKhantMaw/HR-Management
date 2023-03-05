@@ -103,6 +103,20 @@
                     processing: "<p class='my-3'>Loading... </p>",
                 }
             });
+
+            $(document).on('click', '.delete-btn', function(e) {
+                e.preventDefault();
+                swal({
+                        text: "Are you sure? You want to delete this Employee?",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+
+                        }
+                    });
+            });
         });
     </script>
 @endsection

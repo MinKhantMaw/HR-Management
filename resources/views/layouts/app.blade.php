@@ -169,6 +169,9 @@
     {{-- Sweet alert 2 --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {{-- Sweet alert 1 --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <script>
         $(function($) {
