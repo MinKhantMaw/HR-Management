@@ -26,7 +26,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
+            var table = $('#example').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -106,6 +106,8 @@
 
             $(document).on('click', '.delete-btn', function(e) {
                 e.preventDefault();
+
+                var id = $(this).data('id');
                 swal({
                         text: "Are you sure? You want to delete this Employee?",
                         buttons: true,
@@ -113,7 +115,13 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
+                            $.ajax({
+                                method: "DELETE",
+                                url: `/employees/${id}`,
 
+                            }).done(function(res) {
+                                table.ajax().reload();
+                            })
                         }
                     });
             });
