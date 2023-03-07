@@ -23,12 +23,13 @@ class UpdateEmployee extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('employees');
+        $id = $this->route('employee');
+
         return [
-            'employee_id' => 'required|unique:users,employee_id' . $id,
+            'employee_id' => 'required|unique:users,employee_id,' . $id,
             'name' => 'required',
-            'phone' => 'required|min:9|max:11|unique:users,phone' . $id,
-            'email' => 'required|email|unique:users,email' . $id,
+            'phone' => 'required|min:9|max:11|unique:users,phone,' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'nrc_number' => 'required',
             'gender' => 'required',
             'birthday' => 'required',
@@ -36,7 +37,7 @@ class UpdateEmployee extends FormRequest
             'department_id' => 'required',
             'date_of_join' => 'required',
             'is_present' => 'required',
-            // 'password' => 'required',
+            // 'pin_code' => 'required|min:6|max:6|unique:users,pin_code,' . $id,
         ];
     }
 }

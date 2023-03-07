@@ -35,6 +35,14 @@ class EmployeeController extends Controller
     {
         $employees  = User::query();
         return Datatables::of($employees)
+            ->filterColumn('department_name', function ($query, $keyword) {
+                $query->whereHas('department', function ($q1) use ($keyword) {
+                    $q1->where('title', 'like', '%' . $keyword . '%');
+                });
+            })
+            ->editColumn('profile_image', function ($each) {
+                return '<img src="' . $each->profile_image_path() . '" class="profile-thumnail"><p class="my-1">' . $each->name . '</p>';
+            })
             ->addColumn('department_name', function ($each) {
                 return $each->department ? $each->department->title : '-';
             })
@@ -57,7 +65,7 @@ class EmployeeController extends Controller
                 $delete_icon = '<a href=" #" class="text-danger delete-btn" data-id="' . $each->id . '"><i class="fas fa-trash-alt"></i></a>';
                 return '<div class="action-icon">' . $edti_icon . $show_icon .  $delete_icon . '</div>';
             })
-            ->rawColumns(['is_present', 'action'])
+            ->rawColumns(['is_present', 'action', 'profile_image'])
             ->make(true);
     }
     public function create()
@@ -167,8 +175,11 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
-        //
+        $employee = User::findOrFail($id);
+        $employee->delete();
+
+        return 'success';
     }
 }

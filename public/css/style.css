@@ -1,3 +1,7 @@
+body {
+    background: #edf2f6;
+}
+
 /* main conent */
 .content {
     height: 85vh;
@@ -18,6 +22,7 @@
 }
 /* header menu */
 .app-bar {
+    background: #fff;
     padding: 10px 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
@@ -49,6 +54,14 @@
 .bottom-bar a p {
     font-size: 12px;
     text-transform: uppercase;
+}
+
+/* profile image */
+.profile-thumnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    border: 1px solid #ddd;
 }
 
 /* sidebar */

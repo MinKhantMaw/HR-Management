@@ -10,14 +10,15 @@
             <table class="table  table-bordered" id="example" style="width: 100%">
                 <thead>
                     <td class="text-center no-sort no-search"></td>
+                    <th class="text-center no-sort">Profile</th>
                     <td class="text-center no-sort">Employee ID</td>
-                    <th class="text-center no-sort">Name</th>
+                    {{-- <th class="text-center no-sort">Name</th> --}}
                     <th class="text-center no-sort">Phone</th>
                     <th class="text-center no-sort">Email</th>
                     <th class="text-center no-sort">Department</th>
                     <th class="text-center no-sort">Is Present</th>
                     <th class="text-center no-sort">Action</th>
-                    <th class="text-center no-sort no-search hidden">Updated at</th>
+                    <th class="text-center no-search hidden">Updated at</th>
                 </thead>
             </table>
         </div>
@@ -37,15 +38,20 @@
                         class: 'text-center',
                     },
                     {
+                        data: 'profile_image',
+                        name: 'profile_image',
+                        class: 'text-center',
+                    },
+                    {
                         data: 'employee_id',
                         name: 'employee_id',
                         class: 'text-center',
                     },
-                    {
-                        data: 'name',
-                        name: 'name',
-                        class: 'text-center',
-                    },
+                    // {
+                    //     data: 'name',
+                    //     name: 'name',
+                    //     class: 'text-center',
+                    // },
                     {
                         data: 'phone',
                         name: 'phone',
@@ -120,7 +126,7 @@
                                 url: `/employees/${id}`,
 
                             }).done(function(res) {
-                                table.ajax().reload();
+                                table.ajax.reload();
                             })
                         }
                     });
