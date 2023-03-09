@@ -100,7 +100,11 @@
             <div class="d-flex justify-content-center">
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">
-                        <a href="" id="show-sidebar"><i class="fas fa-bars"></i></a>
+                        @if (request()->is('/'))
+                            <a href="" id="show-sidebar"><i class="fas fa-bars"></i></a>
+                        @else
+                            <a href="" id="back-btn"><i class="fas fa-chevron-left"></i></a>
+                        @endif
                         <h5 class="mb-0"> @yield('title')</h5>
                         <a href=""></a>
                     </div>
@@ -172,7 +176,9 @@
     {{-- Sweet alert 1 --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
+    {{-- mark js cdn --}}
+    <script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
+    <script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
     <script>
         $(function($) {
 
@@ -243,6 +249,18 @@
                     icon: 'success'
                 })
             @endif
+            $.extend(true, $.fn.dataTable.defaults, {
+                mark: true,
+                language: {
+                    processing: "<p class='my-3'>Loading... </p>",
+                }
+            });
+
+            $('#back-btn').on('click', function(e) {
+                e.preventDefault();
+                window.history.go(-1);
+            })
+
         });
     </script>
     @yield('scripts')

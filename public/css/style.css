@@ -17,6 +17,10 @@ body {
     background-color: #4cd195 !important;
 }
 
+.table td,
+.table th {
+    vertical-align: middle;
+}
 .btn {
     font-size: 12px !important;
 }

@@ -105,9 +105,7 @@
                         searchable: false,
                     },
                 ],
-                language: {
-                    processing: "<p class='my-3'>Loading... </p>",
-                }
+
             });
 
             $(document).on('click', '.delete-btn', function(e) {
