@@ -2,6 +2,12 @@ body {
     background: #edf2f6;
 }
 
+.badge {
+    padding: 6px 10px 3px;
+    font-size: 12px;
+    box-shadow: none !important;
+}
+
 /* main conent */
 .content {
     height: 85vh;
@@ -237,6 +243,9 @@ body {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    background: #eee;
+    padding: 3px;
+    border-radius: 10px;
 }
 
 .sidebar-wrapper .sidebar-header .user-info {
@@ -459,7 +468,7 @@ body {
 .chiller-theme .sidebar-wrapper .sidebar-header,
 .chiller-theme .sidebar-wrapper .sidebar-search,
 .chiller-theme .sidebar-wrapper .sidebar-menu {
-    border-top: 1px solid #3a3f48;
+    border-top: 1px solid #2d3747;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
@@ -503,7 +512,7 @@ body {
     a:hover:before,
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu:focus + span,
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
-    color: #16c7ff;
+    color: #4cd195;
     text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
 }
 

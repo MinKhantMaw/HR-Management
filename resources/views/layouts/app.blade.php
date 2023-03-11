@@ -53,15 +53,15 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        {{-- <img class="img-responsive img-rounded"
-                            src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-                            alt="User picture"> --}}
+                        <img class="img-responsive img-rounded" src="{{ auth()->user()->profile_image_path() }}"
+                            alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">
+                            <strong>{{ auth()->user()->name }}</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span
+                            class="user-role">{{ auth()->user()->department ? auth()->user()->department->title : 'No Department' }}</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -124,7 +124,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('home') }}" class="text-decoration-none">
                             <i class="fas fa-home"></i>
                             <p class="mb-0">Home</p>
                         </a>
@@ -136,9 +136,9 @@
                             <i class="fas fa-home"></i>
                             <p class="mb-0">Home</p>
                         </a>
-                        <a href="" class="text-decoration-none">
-                            <i class="fas fa-home"></i>
-                            <p class="mb-0">Home</p>
+                        <a href="{{ route('profile') }}" class="text-decoration-none">
+                            <i class="fas fa-user"></i>
+                            <p class="mb-0">Profile</p>
                         </a>
                     </div>
                 </div>
