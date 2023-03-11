@@ -4,8 +4,8 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="text-center d-flex justify-content-start">
+                <div class="col-md-12">
+                    <div class="text-center">
                         <img src="{{ $authUser->profile_image_path() }}" alt="" class="profile-image">
                         <div class="py-3 px-3">
                             <h4>{{ $authUser->name }}</h4>
