@@ -88,6 +88,12 @@
                                 <span>Employees</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('department.index') }}">
+                                <i class="fas fa-sitemap"></i>
+                                <span>Department</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
